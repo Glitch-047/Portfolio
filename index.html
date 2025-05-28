@@ -113,10 +113,47 @@
       0% { opacity: 0; transform: translateY(-20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+    .navbar {
+  background-color: #203a43;
+  padding: 0.75rem 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.navbar li {
+  display: inline;
+  margin: 0 15px;
+}
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.navbar a:hover {
+  text-decoration: underline;
+}
+.dark-mode .navbar {
+  background-color: #111;
+}
   </style>
 </head>
 <body>
 
+  <nav class="navbar">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="certificates.html">Certificates</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
   <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
 
   <header>
