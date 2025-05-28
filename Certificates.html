@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Certificates</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0e7db;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .card-title {
+      padding: 1rem;
+      font-weight: bold;
+      font-size: 1rem;
+      background: #fafafa;
+      border-top: 1px solid #eee;
+    }
+    footer {
+      background: #0f2027;
+      color: #ccc;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Certifications</h1>
+    <p>A curated gallery of all my academic and professional recognitions.</p>
+  </header>
+
+  <div class="gallery">
+    <!-- Repeat this card for each certificate -->
+    <div class="card">
+      <img src="certificates/sample1.jpg" alt="Certificate 1">
+      <div class="card-title">Certificate Title 1</div>
+    </div>
+    <div class="card">
+      <img src="certificates/sample2.jpg" alt="Certificate 2">
+      <div class="card-title">Certificate Title 2</div>
+    </div>
+    <!-- Add more cards below as needed -->
+  </div>
+
+  <footer>
+    &copy; 2025 Ashwin A S | Certifications
+  </footer>
+</body>
+</html>
