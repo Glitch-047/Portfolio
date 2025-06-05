@@ -13,6 +13,35 @@
       padding: 0;
       color: #333;
     }
+
+    /* NavBar Styling */
+    .navbar {
+      background-color: #203a43;
+      padding: 0.75rem 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar li {
+      display: inline;
+      margin: 0 15px;
+    }
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+    .navbar a:hover {
+      text-decoration: underline;
+    }
+
     header {
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: #fff;
@@ -61,15 +90,17 @@
   </style>
 </head>
 <body>
+
   <nav class="navbar">
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#skills">Skills</a></li>
-    <li><a href="index.html#projects">Projects</a></li>
-    <li><a href="certificates.html">Certificates</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
-</nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#skills">Skills</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="Certificates.html">Certificates</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
   <header>
     <h1>My Certifications</h1>
     <p>A curated gallery of all my academic and professional recognitions.</p>
@@ -91,5 +122,6 @@
   <footer>
     &copy; 2025 Ashwin A S | Certifications
   </footer>
+
 </body>
 </html>
