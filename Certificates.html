@@ -6,6 +6,9 @@
   <title>My Certificates</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      color-scheme: light dark;
+    }
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #f0e7db;
@@ -13,8 +16,27 @@
       padding: 0;
       color: #333;
     }
-
-    /* NavBar Styling */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #1c1c1c;
+        color: #eee;
+      }
+      .navbar {
+        background-color: #111;
+      }
+      header, footer {
+        background: #111;
+        color: #ccc;
+      }
+      .card {
+        background: #2c2c2c;
+        color: #fff;
+      }
+      .card-title {
+        background: #1c1c1c;
+        border-top: 1px solid #333;
+      }
+    }
     .navbar {
       background-color: #203a43;
       padding: 0.75rem 0;
@@ -29,7 +51,7 @@
       padding: 0;
     }
     .navbar li {
-      display: inline;
+      display: inline-block;
       margin: 0 15px;
     }
     .navbar a {
@@ -41,7 +63,6 @@
     .navbar a:hover {
       text-decoration: underline;
     }
-
     header {
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: #fff;
@@ -53,7 +74,7 @@
     }
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
       padding: 2rem;
       max-width: 1200px;
@@ -87,6 +108,18 @@
       text-align: center;
       padding: 1rem;
     }
+    @media screen and (max-width: 600px) {
+      .navbar li {
+        display: block;
+        margin: 0.5rem 0;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .card-title {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -96,7 +129,7 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="index.html#skills">Skills</a></li>
       <li><a href="index.html#projects">Projects</a></li>
-      <li><a href="Certificates.html">Certificates</a></li>
+      <li><a href="certificates.html">Certificates</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
   </nav>
@@ -107,8 +140,7 @@
   </header>
 
   <div class="gallery">
-    <!-- Repeat this card for each certificate -->
-    <div class="card">
+     <div class="card">
       <img src="certificates/Coursera - Banking and Financial Institutions_page-0001.jpg" alt="Coursera Certificate">
       <div class="card-title">Coursera - Banking and Financial Institutions</div>
     </div>
@@ -154,7 +186,7 @@
     </div>
     <div class="card">
       <img src="certificates/NPTEL - Project Management.jpg" alt="NPTEL">
-      <div class="card-title">Project Management_Planning, Execution, Evaluation and Control</div>
+      <div class="card-title">Project Management: Planning, Execution, Evaluation and Control</div>
     </div>
     <div class="card">
       <img src="certificates/NPTEL - Leadership and Team Effectiveness.jpg" alt="NPTEL">
