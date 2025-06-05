@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A S Ashwin | Portfolio</title>
+  <title>Ashwin A S | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
@@ -22,22 +22,9 @@
       color: #333;
       transition: background-color 0.3s, color 0.3s;
     }
-    @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #1c1c1c;
-        color: #eee;
-      }
-      header, footer, .navbar {
-        background-color: #111;
-        color: #ccc;
-      }
-      section {
-        background-color: #2c2c2c;
-        color: #eee;
-      }
-      a {
-        color: #91caff;
-      }
+    body.dark-mode {
+      background-color: #1c1c1c;
+      color: #eee;
     }
     .navbar {
       background-color: #203a43;
@@ -46,6 +33,9 @@
       position: sticky;
       top: 0;
       z-index: 999;
+    }
+    .dark-mode .navbar {
+      background-color: #111;
     }
     .navbar ul {
       list-style-type: none;
@@ -99,6 +89,10 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
     }
+    .dark-mode section {
+      background-color: #2c2c2c;
+      color: #eee;
+    }
     section:hover {
       transform: translateY(-5px);
     }
@@ -129,9 +123,15 @@
       padding: 1rem;
       font-size: 0.9rem;
     }
+    .dark-mode footer {
+      background-color: #111;
+    }
     a {
       color: #007bff;
       text-decoration: none;
+    }
+    .dark-mode a {
+      color: #91caff;
     }
     a:hover {
       text-decoration: underline;
@@ -154,7 +154,7 @@
 <body>
 
   <button class="theme-toggle" onclick="toggleTheme()">
-    <i id="theme-icon" class="fas fa-moon"></i>
+    <i id="theme-icon" class="fas"></i>
   </button>
 
   <nav class="navbar">
@@ -162,7 +162,7 @@
       <li><a href="#">Home</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="Certificates.html">Certificates</a></li>
+      <li><a href="certificates.html">Certificates</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -174,7 +174,7 @@
 
   <section id="about">
     <h2><i class="fas fa-user icon"></i>About Me</h2>
-    <p>Hello! I'm <strong>A S Ashwin</strong>, a student currently pursuing an undergraduate programme of B.Com (PA) at Kumaraguru College. With a passion for leadership, strategic planning, and community engagement, I strive to empower others while growing with them. I strongly believe in integrity, creativity, and thoughtful action.</p>
+    <p>Hello! I'm <strong>Ashwin A S</strong>, an undergraduate student from B.Com (PA) at Kumaraguru College. With a passion for leadership, strategic planning, and community engagement, I strive to empower others while growing with them. I strongly believe in integrity, creativity, and thoughtful action.</p>
   </section>
 
   <section id="skills">
@@ -201,7 +201,7 @@
 
   <section id="certifications">
     <h2><i class="fas fa-certificate icon"></i>Certifications</h2>
-    <p>Click here to view my <a href="Certificates.html">Certification Gallery</a></p>
+    <p>Click here to view my <a href="certificates.html">Certification Gallery</a></p>
   </section>
 
   <section id="contact">
@@ -214,21 +214,37 @@
   </section>
 
   <footer>
-    &copy; 2025 A S Ashwin | Designed with 💙 and coffee ☕
+    &copy; 2025 Ashwin A S | Designed with 💙 and coffee ☕
   </footer>
 
   <script>
+    // Load saved or system theme
+    function loadTheme() {
+      const storedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
+        document.body.classList.add("dark-mode");
+        document.getElementById("theme-icon").classList.add("fa-sun");
+      } else {
+        document.getElementById("theme-icon").classList.add("fa-moon");
+      }
+    }
+
     function toggleTheme() {
       document.body.classList.toggle("dark-mode");
       const icon = document.getElementById("theme-icon");
       if (document.body.classList.contains("dark-mode")) {
         icon.classList.remove("fa-moon");
         icon.classList.add("fa-sun");
+        localStorage.setItem("theme", "dark");
       } else {
         icon.classList.remove("fa-sun");
         icon.classList.add("fa-moon");
+        localStorage.setItem("theme", "light");
       }
     }
+
+    window.onload = loadTheme;
   </script>
 
 </body>
