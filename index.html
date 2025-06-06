@@ -27,15 +27,22 @@
     color: #eee;
   }
   .navbar {
-    background-color: #203a43;
-    padding: 0.75rem 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+  background-color: #203a43;
+  padding: 0.75rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  }
+  .nav-links-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  max-width: 100%;
   }
   .navbar ul {
     list-style-type: none;
@@ -204,6 +211,10 @@
 }
 
 @media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
   .nav-links-container {
     width: 100%;
     justify-content: center;
@@ -211,7 +222,6 @@
 
   .nav-links {
     flex-direction: column;
-    gap: 10px;
     margin-top: 1rem;
     background-color: #203a43;
     display: none;
