@@ -116,6 +116,26 @@
       color: #007bff;
       margin-right: 0.5rem;
     }
+    .resume-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: #007bff;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .resume-btn:hover {
+      background-color: #0056b3;
+    }
+    .dark-mode .resume-btn {
+      background-color: #3399ff;
+      color: #000;
+    }
     footer {
       background: #0f2027;
       color: #ccc;
@@ -162,7 +182,7 @@
       <li><a href="#">Home</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="Certificates.html">Certificates</a></li>
+      <li><a href="certificates.html">Certificates</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -175,6 +195,12 @@
   <section id="about">
     <h2><i class="fas fa-user icon"></i>About Me</h2>
     <p>Hello! I'm <strong>A S Ashwin</strong>, an undergraduate student from B.Com (PA) at Kumaraguru College. With a passion for leadership, strategic planning, and community engagement, I strive to empower others while growing with them. I strongly believe in integrity, creativity, and thoughtful action.</p>
+  </section>
+
+  <section id="resume">
+    <h2><i class="fas fa-file-download icon"></i>Download Resume</h2>
+    <p>You can download my latest resume below:</p>
+    <a href="Ashwin_Resume.pdf" download class="resume-btn"><i class="fas fa-download"></i> Download Resume (PDF)</a>
   </section>
 
   <section id="skills">
@@ -214,11 +240,10 @@
   </section>
 
   <footer>
-    &copy; 2025 Ashwin A S | Designed with 💙 and coffee ☕
+    &copy; 2025 A S Ashwin | Desinged by Ashwin
   </footer>
 
   <script>
-    // Load saved or system theme
     function loadTheme() {
       const storedTheme = localStorage.getItem("theme");
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
