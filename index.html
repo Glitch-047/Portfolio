@@ -28,22 +28,22 @@
     }
     .navbar {
       background-color: #203a43;
-      padding: 0.75rem 0;
+      padding: 0.75rem 1rem;
       text-align: center;
       position: sticky;
       top: 0;
       z-index: 999;
-    }
-    .dark-mode .navbar {
-      background-color: #111;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     .navbar ul {
       list-style-type: none;
       margin: 0;
       padding: 0;
+      display: flex;
     }
     .navbar li {
-      display: inline;
       margin: 0 15px;
     }
     .navbar a {
@@ -53,6 +53,30 @@
     }
     .navbar a:hover {
       text-decoration: underline;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+    }
+    @media screen and (max-width: 768px) {
+      .navbar ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #203a43;
+        margin-top: 1rem;
+      }
+      .navbar ul.show {
+        display: flex;
+      }
+      .navbar li {
+        margin: 10px 0;
+      }
+      .menu-toggle {
+        display: block;
+      }
     }
     .theme-toggle {
       position: fixed;
@@ -163,12 +187,6 @@
       0% { opacity: 0; transform: translateY(-20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-    @media screen and (max-width: 600px) {
-      .navbar li {
-        display: block;
-        margin: 0.5rem 0;
-      }
-    }
   </style>
 </head>
 <body>
@@ -178,7 +196,10 @@
   </button>
 
   <nav class="navbar">
-    <ul>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul id="navbarMenu">
       <li><a href="#">Home</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -187,6 +208,7 @@
     </ul>
   </nav>
 
+<!-- rest of the HTML remains unchanged -->
   <header>
     <h1>A S Ashwin</h1>
     <p>📚 Student | 💡 Creative Thinker | 🌐 Web Explorer</p>
@@ -243,6 +265,8 @@
     &copy; 2025 A S Ashwin | Desinged by Ashwin
   </footer>
 
+  <!-- rest of the HTML remains unchanged -->
+
   <script>
     function loadTheme() {
       const storedTheme = localStorage.getItem("theme");
@@ -267,6 +291,10 @@
         icon.classList.add("fa-moon");
         localStorage.setItem("theme", "light");
       }
+    }
+
+    function toggleMenu() {
+      document.getElementById("navbarMenu").classList.toggle("show");
     }
 
     window.onload = loadTheme;
