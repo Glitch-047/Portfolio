@@ -1,27 +1,72 @@
+/* =========================================================
+   ROOT & GLOBAL RESET
+   ========================================================= */
 
-  :root {
-    color-scheme: light dark;
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-  }
-  body {
-    font-family: 'Sora', sans-serif;
-    background-color: #f0e7db;
-    color: #333;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  body.dark-mode {
-    background-color: #1c1c1c;
-    color: #eee;
-  }
-  h1, h2, h3 {
-    font-family: 'Sora', sans-serif;
-  }
-  .navbar {
+:root {
+  color-scheme: light dark;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* =========================================================
+   BASE BODY STYLES
+   ========================================================= */
+
+body {
+  font-family: 'Sora', sans-serif;
+  background-color: #f0e7db;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode base text (beige) */
+body.dark-mode {
+  background-color: #1c1c1c;
+  color: #f0e7db;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1, h2, h3 {
+  font-family: 'Sora', sans-serif;
+}
+
+h2 {
+  color: #203a43;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+/* Headings in dark mode */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+  color: #f0e7db;
+}
+
+p,
+li {
+  font-size: 1.1rem;
+}
+
+/* Paragraphs & lists in dark mode */
+body.dark-mode p,
+body.dark-mode li {
+  color: #f0e7db;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
   background-color: #203a43;
   padding: 0.75rem 1rem;
   position: sticky;
@@ -31,83 +76,68 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  }
-  .nav-links-container {
+}
+
+.nav-links-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  max-width: 100%;
-  }
-  .navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  .navbar li {
-    margin: 0 15px;
-  }
-  .navbar a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  .navbar a:hover {
-    text-decoration: underline;
-  }
-  .menu-toggle {
-    display: none;
-    font-size: 1.5rem;
-    color: #fff;
-    cursor: pointer;
-  }
-  @media screen and (max-width: 768px) {
-    .navbar ul {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      background-color: #203a43;
-      margin-top: 1rem;
-      text-align: center;
-    }
-    .navbar ul.show {
-      display: flex;
-    }
-    .navbar li {
-      margin: 10px 0;
-    }
-    .menu-toggle {
-      display: block;
-    }
-  }
-  .theme-toggle {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: #fff;
-    cursor: pointer;
-    z-index: 1000;
-  }
-  header {
-    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-    color: #fff;
-    padding: 3rem 1rem;
-    text-align: center;
-    animation: fadeIn 1.2s ease-out;
-    margin-top: 0;
-  }
-  header h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-  }
-  header p {
-    font-size: 1.3rem;
-    color: #ddd;
-  }
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+}
+
+.navbar li {
+  margin: 0 15px;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile menu toggle */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* =========================================================
+   HEADER / HERO
+   ========================================================= */
+
+header {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  padding: 3rem 1rem;
+  text-align: center;
+  animation: fadeIn 1.2s ease-out;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.3rem;
+  color: #ddd;
+}
+
+/* =========================================================
+   CONTENT SECTIONS (CARDS)
+   ========================================================= */
+
 section {
   max-width: 1000px;
   margin: 2rem auto;
@@ -118,128 +148,104 @@ section {
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-/* System dark mode (auto-detect) */
+/* System dark mode auto-detection */
 @media (prefers-color-scheme: dark) {
   body:not(.dark-mode) section {
     background-color: #2c2c2c;
-    color: #eee;
+    color: #f0e7db;
   }
 }
 
 /* User-forced dark mode */
-.dark-mode section {
+body.dark-mode section {
   background-color: #2c2c2c;
-  color: #eee;
+  color: #f0e7db;
 }
 
 section:hover {
   transform: translateY(-5px);
 }
 
-  h2 {
-    color: #203a43;
-    margin-bottom: 1rem;
-    font-size: 2rem;
-  }
-  .dark-mode h2 {
-    color: #f2f2f2;
-  }
-  ul {
-    list-style: none;
-    padding-left: 1rem;
-  }
-  li {
-    margin-bottom: 0.75rem;
-    font-size: 1.1rem;
-  }
-  .icon {
-    color: #007bff;
-    margin-right: 0.5rem;
-  }
-  .resume-btn {
-    display: inline-block;
-    margin-top: 1rem;
-    background-color: #007bff;
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background 0.3s ease;
-  }
-  .resume-btn:hover {
-    background-color: #0056b3;
-  }
-  .dark-mode .resume-btn {
-    background-color: #3399ff;
-    color: #000;
-  }
-  footer {
-    background: #0f2027;
-    color: #ccc;
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-  }
-  .dark-mode footer {
-    background-color: #111;
-  }
-  a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  .dark-mode a {
-    color: #91caff;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-  .contact-info p {
-    margin-bottom: 0.5rem;
-  }
-  @keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(-20px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-    .nav-links-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+/* =========================================================
+   ICONS
+   ========================================================= */
+
+.icon {
+  color: #007bff;
+  margin-right: 0.5rem;
 }
 
-.nav-links {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* Icons in dark mode */
+body.dark-mode .icon {
+  color: #f0e7db;
 }
 
-@media screen and (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .nav-links-container {
-    width: 100%;
-    justify-content: center;
-  }
+/* =========================================================
+   BUTTONS
+   ========================================================= */
 
-  .nav-links {
-    flex-direction: column;
-    margin-top: 1rem;
-    background-color: #203a43;
-    display: none;
-  }
-
-  .nav-links.show {
-    display: flex;
-  }
+.resume-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
-    #typewriter {
+.resume-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Resume button in dark mode */
+body.dark-mode .resume-btn {
+  background-color: #3399ff;
+  color: #000;
+}
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Links in dark mode */
+body.dark-mode a {
+  color: #e6d9c7;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+  background-color: #0f2027;
+  color: #ccc;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+body.dark-mode footer {
+  background-color: #111;
+}
+
+/* =========================================================
+   TYPEWRITER
+   ========================================================= */
+
+#typewriter {
   font-size: 1.3rem;
   font-weight: 500;
   color: #f0e7db;
@@ -256,40 +262,112 @@ section:hover {
   50% { opacity: 0; }
 }
 
-  /* Scroll-to-top button */
-  .scroll-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 1.5rem;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    padding: 0.6rem 0.75rem;
-    font-size: 1.25rem;
-    cursor: pointer;
+/* =========================================================
+   SCROLL TO TOP
+   ========================================================= */
+
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 1.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 0.6rem 0.75rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: none;
+  z-index: 1000;
+}
+
+.scroll-top:hover {
+  background-color: #0056b3;
+}
+
+/* =========================================================
+   DECORATIVE ELEMENTS
+   ========================================================= */
+
+/* Wave animation */
+.wave-container {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave {
+  position: absolute;
+  width: 300%;
+  height: 100px;
+  animation: waveMove 12s linear infinite;
+}
+
+.wave:nth-of-type(2) {
+  top: 15px;
+  opacity: 0.5;
+  animation-duration: 15s;
+}
+
+.wave:nth-of-type(3) {
+  top: 30px;
+  opacity: 0.3;
+  animation-duration: 20s;
+}
+
+@keyframes waveMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+/* Starfield canvas */
+#starfield {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: black;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar ul {
     display: none;
-    z-index: 1000;
-    transition: opacity 0.3s ease;
-  }
-  .scroll-top:hover {
-    background-color: #0056b3;
+    flex-direction: column;
+    background-color: #203a43;
+    width: 100%;
+    margin-top: 1rem;
+    text-align: center;
   }
 
-  /* Wave animation */
-  .wave-container{position:relative;width:100%;height:100px;overflow:hidden;line-height:0;margin-top:-1px;}
-  .wave{position:absolute;left:0;top:0;width:300%;height:100px;animation:waveMove 12s linear infinite;}
-  .wave:nth-of-type(2){top:15px;opacity:0.5;animation-duration:15s;}
-  .wave:nth-of-type(3){top:30px;opacity:0.3;animation-duration:20s;}
-
-  /* Starfield canvas */
-  #starfield {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100vw;
-    height: 100vh;
-    background: black;
+  .navbar ul.show {
+    display: flex;
   }
-  @keyframes waveMove{0%{transform:translateX(0);}100%{transform:translateX(-33.333%);}}
+
+  .navbar li {
+    margin: 10px 0;
+  }
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
