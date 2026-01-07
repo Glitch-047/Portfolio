@@ -1,120 +1,128 @@
+/* =========================================================
+   DOM READY
+   ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    function loadTheme() {
-      const storedTheme = localStorage.getItem("theme");
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
-        document.body.classList.add("dark-mode");
-        document.getElementById("theme-icon").classList.add("fa-sun");
-      } else {
-        document.getElementById("theme-icon").classList.add("fa-moon");
-      }
+  /* =========================================================
+     THEME TOGGLE (LIGHT / DARK)
+     ========================================================= */
+
+  function loadTheme() {
+    const storedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const icon = document.getElementById("theme-icon");
+
+    if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
+      document.body.classList.add("dark-mode");
+      icon?.classList.add("fa-sun");
+    } else {
+      icon?.classList.add("fa-moon");
     }
-
-    function toggleTheme() {
-      document.body.classList.toggle("dark-mode");
-      const icon = document.getElementById("theme-icon");
-      if (document.body.classList.contains("dark-mode")) {
-        icon.classList.remove("fa-moon");
-        icon.classList.add("fa-sun");
-        localStorage.setItem("theme", "dark");
-      } else {
-        icon.classList.remove("fa-sun");
-        icon.classList.add("fa-moon");
-        localStorage.setItem("theme", "light");
-      }
-    }
-
-    function toggleMenu() {
-      document.getElementById("navbarMenu").classList.toggle("show");
-    }
-
-    window.onload = loadTheme;
-  </script>
-
-  <script>
-  // Typewriter phrases – add more below as desired
-  const phrases = [
-    "📚 Student",
-    "💡 Creative Thinker",
-    "🌐 Web Explorer",
-    "🕶 Innovator",
-    // 👉 Add more phrases here
-  ];
-
-  let i = 0;
-  let j = 0;
-  let currentPhrase = [];
-  let isDeleting = false;
-  let isEnd = false;
-
-  function loop() {
-    document.getElementById('typewriter').innerHTML = currentPhrase.join('');
-
-    if (i < phrases.length) {
-
-      if (!isDeleting && j <= phrases[i].length) {
-        currentPhrase.push(phrases[i][j]);
-        j++;
-        document.getElementById('typewriter').innerHTML = currentPhrase.join('');
-      }
-
-      if (isDeleting && j <= phrases[i].length) {
-        currentPhrase.pop();
-        j--;
-        document.getElementById('typewriter').innerHTML = currentPhrase.join('');
-      }
-
-      if (j == phrases[i].length) {
-        isEnd = true;
-        isDeleting = true;
-      }
-
-      if (isDeleting && j === 0) {
-        currentPhrase = [];
-        isDeleting = false;
-        i++;
-        if (i === phrases.length) {
-          i = 0;
-        }
-      }
-    }
-    const speedUp = Math.random() * (80 - 50) + 50;
-    const normalSpeed = Math.random() * (300 - 200) + 200;
-    const time = isEnd ? 1000 : isDeleting ? speedUp : normalSpeed;
-    isEnd = false;
-    setTimeout(loop, time);
   }
 
-  loop();
-</script>
+  function toggleTheme() {
+    const icon = document.getElementById("theme-icon");
+    document.body.classList.toggle("dark-mode");
 
-  <!-- Reveal on scroll script -->
-  <script>
+    if (document.body.classList.contains("dark-mode")) {
+      icon?.classList.remove("fa-moon");
+      icon?.classList.add("fa-sun");
+      localStorage.setItem("theme", "dark");
+    } else {
+      icon?.classList.remove("fa-sun");
+      icon?.classList.add("fa-moon");
+      localStorage.setItem("theme", "light");
+    }
+  }
+
+  /* Expose for HTML onclick */
+  window.toggleTheme = toggleTheme;
+
+  loadTheme();
+
+  /* =========================================================
+     NAVBAR (MOBILE TOGGLE)
+     ========================================================= */
+
+  function toggleMenu() {
+    document.getElementById("navbarMenu")?.classList.toggle("show");
+  }
+
+  window.toggleMenu = toggleMenu;
+
+  /* =========================================================
+     TYPEWRITER EFFECT (FIXED & STABLE)
+     ========================================================= */
+
+  const typeTarget = document.getElementById("typewriter");
+  if (typeTarget) {
+    const phrases = [
+      "📚 Student",
+      "💡 Creative Thinker",
+      "🌐 Web Explorer",
+      "🕶 Innovator",
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeWriterLoop() {
+      const currentText = phrases[phraseIndex];
+      typeTarget.textContent = currentText.substring(0, charIndex);
+
+      if (!isDeleting) {
+        charIndex++;
+        if (charIndex > currentText.length) {
+          setTimeout(() => (isDeleting = true), 1000);
+        }
+      } else {
+        charIndex--;
+        if (charIndex === 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+        }
+      }
+
+      const speed = isDeleting ? 80 : 120;
+      setTimeout(typeWriterLoop, speed);
+    }
+
+    typeWriterLoop();
+  }
+
+  /* =========================================================
+     REVEAL ON SCROLL
+     ========================================================= */
+
+  const revealElements = document.querySelectorAll(".reveal");
+
+  if (revealElements.length) {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('active');
+          entry.target.classList.add("active");
         }
       });
     }, { threshold: 0.2 });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
+    revealElements.forEach(el => observer.observe(el));
+  }
 
-  <script>
-    window.addEventListener('scroll', () => {
-      const btn = document.querySelector('.scroll-top');
-      if (!btn) return;
-      if (window.scrollY > 300) {
-        btn.style.display = 'block';
-      } else {
-        btn.style.display = 'none';
-      }
-    });
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+  /* =========================================================
+     SCROLL TO TOP BUTTON
+     ========================================================= */
 
+  const scrollBtn = document.querySelector(".scroll-top");
 
+  window.addEventListener("scroll", () => {
+    if (!scrollBtn) return;
+    scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+
+  window.scrollToTop = function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+});
