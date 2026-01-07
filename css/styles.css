@@ -34,31 +34,28 @@ body.dark-mode {
    TYPOGRAPHY
    ========================================================= */
 
+/* =========================================================
+   HEADINGS (ADAPTIVE)
+   ========================================================= */
+
 h1, h2, h3 {
   font-family: 'Sora', sans-serif;
+  color: #203a43; /* Light mode */
 }
 
-h2 {
-  color: #203a43;
-  margin-bottom: 1rem;
-  font-size: 2rem;
+/* System dark mode */
+@media (prefers-color-scheme: dark) {
+  body:not(.dark-mode) h1,
+  body:not(.dark-mode) h2,
+  body:not(.dark-mode) h3 {
+    color: #f0e7db;
+  }
 }
 
-/* Headings in dark mode */
+/* User-forced dark mode */
 body.dark-mode h1,
 body.dark-mode h2,
 body.dark-mode h3 {
-  color: #f0e7db;
-}
-
-p,
-li {
-  font-size: 1.1rem;
-}
-
-/* Paragraphs & lists in dark mode */
-body.dark-mode p,
-body.dark-mode li {
   color: #f0e7db;
 }
 
