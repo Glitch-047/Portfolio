@@ -276,7 +276,7 @@ body.dark-mode footer {
   z-index: 1000;
 
   background-color: rgba(255, 255, 255, 0.15);
-  color: #f0e7db;
+  color: #ffffff;
   backdrop-filter: blur(6px);
 
   transition: background-color 0.3s ease, transform 0.2s ease;
